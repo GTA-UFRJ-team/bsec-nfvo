@@ -1,17 +1,17 @@
-**Sinfonia**
+**BSec-NFVO**
 ============
-Official repository for Sinfonia, a Network Function Virtualization orchestration tool mantained by GTA/UFRJ.
+Official repository for BSec-NFVO, a Network Function Virtualization orchestration tool mantained by GTA/UFRJ.
 
 
 
 Installation
 ------------
 
-The Sinfonia orchestration tool is built on top of the Open Platform for Network Function Virtualization (OPNFV) and a main server written with the Django Python framework.  We need to install both modules to make the tool operational.
+The BSec-NFVO orchestration tool is built on top of the Open Platform for Network Function Virtualization (OPNFV) and a main server written with the Django Python framework.  We need to install both modules to make the tool operational.
 
 Installing OPNFV
 ----------------
-OPNFV is a cloud operating system platform mantained by the Linux Foundation that provides the tools for the NFV orchestration Sinfonia is based upon. To install it, please read the [official documentation](http://docs.opnfv.org/en/stable-danube/release/installation.introduction.html) for its current relase. We recommend the [deployment through Fuel](http://docs.opnfv.org/en/stable-danube/submodules/fuel/docs/release/installation/index.html#fuel-installation) as it is easier to debug and it has a graphical installation tool. The hardware requirements for a minimum OPNFV environment deployment through Fuel are:
+OPNFV is a cloud operating system platform mantained by the Linux Foundation that provides the tools for the NFV orchestration BSec-NFVO is based upon. To install it, please read the [official documentation](http://docs.opnfv.org/en/stable-danube/release/installation.introduction.html) for its current relase. We recommend the [deployment through Fuel](http://docs.opnfv.org/en/stable-danube/submodules/fuel/docs/release/installation/index.html#fuel-installation) as it is easier to debug and it has a graphical installation tool. The hardware requirements for a minimum OPNFV environment deployment through Fuel are:
 
  - 1 Fuel Master node
  	- **CPU:**	Dual-core
@@ -31,28 +31,28 @@ OPNFV is a cloud operating system platform mantained by the Linux Foundation tha
 	- 1 Un-Tagged VLAN for PXE Boot - ADMIN Network
 *Note: These can be allocated to a single NIC - or spread out over multiple NICs as your hardware supports.*
  
- Sinfonia was originally developed in a 4-node deployment (1 controller node, 3 compute nodes) of OPNFV Danube 3.0 and it should be compatible with previous and future releases.  
+ BSec-NFVO was originally developed in a 4-node deployment (1 controller node, 3 compute nodes) of OPNFV Danube 3.0 and it should be compatible with previous and future releases.  
 
 
-Installing Sinfonia
+Installing BSec-NFVO
 ----------------
-Sinfonia itself is written in Python and uses the Django framework to build its interface and main server. To install the tool simply clone the git repository:
+BSec-NFVO itself is written in Python and uses the Django framework to build its interface and main server. To install the tool simply clone the git repository:
 
-     git clone https://github.com/gfrebello/sinfonia.git
+     git clone https://github.com/gfrebello/bsec-nfvo.git
 
 And install its dependencies with `pip`:
 		
-    cd ./sinfonia
+    cd ./bsec-nfvo
     pip install -r requirements.txt
 
-If you are running Python < 2.7.9 and don't have `pip` installed, check its [installation guide](https://pip.pypa.io/en/stable/installing/). By running  these simple commands, you should have a full installation of Sinfonia. 
+If you are running Python < 2.7.9 and don't have `pip` installed, check its [installation guide](https://pip.pypa.io/en/stable/installing/). By running  these simple commands, you should have a full installation of BSec-NFVO. 
 
-Configuring and running Sinfonia locally
+Configuring and running BSec-NFVO locally
 ----------------
 
-Sinfonia is designed to be used in a distributed scenario where different modules run on different hosts. However, the easiest and fastest way to deploy is by instantiating everything locally. This section shows Sinfonia's simplest form of deployment. For advanced features, please refer to ().
+BSec-NFVO is designed to be used in a distributed scenario where different modules run on different hosts. However, the easiest and fastest way to deploy is by instantiating everything locally. This section shows BSec-NFVO's simplest form of deployment. For advanced features, please refer to ().
 
-After OPNFV is up and running and the the Sinfonia installation setup is done, we need to configure our orchestrator and initialize our blockchain modules. First, we should define the OPNFV controller IP and the port for communication between the modules (2346 by default). Make sure the port you choose is available and not being blocked by any sort of firewall.
+After OPNFV is up and running and the the BSec-NFVO installation setup is done, we need to configure our orchestrator and initialize our blockchain modules. First, we should define the OPNFV controller IP and the port for communication between the modules (2346 by default). Make sure the port you choose is available and not being blocked by any sort of firewall.
 
 On `orchestrator/orchestrator.py`:
 
@@ -87,10 +87,11 @@ Detatch from the screen with Ctrl+A then Ctrl+D and intialize the blockchain cli
 
 _Note: The use of `screen` here is once again a way to simplify our deployment. This is equivalent to running the Python consoles on two bash terminals._  
 
-By default, Sinfonia ships with a key pair that the blockchain client module uses to sign its transactions. If you want to generate your own key pair or define custom configurations, please refer to the Sinfonia advanced page.
+By default, BSec-NFVO ships with a key pair that the blockchain client module uses to sign its transactions. If you want to generate your own key pair or define custom configurations, please refer to the BSec-NFVO advanced page.
 
-Finally, add your hostname to `ALLOWED_HOSTS` in `maestro/settings.py` and start Sinfonia's main server with:
+Finally, add your hostname to `ALLOWED_HOSTS` in `maestro/settings.py` and start BSec-NFVO's main server with:
 
     python manage.py runserver 0.0.0.0
 
-You should now see an authentication screen on http://localhost/dashboard. Register yourself and enjoy Sinfonia!
+You should now see an authentication screen on http://localhost/dashboard. Register yourself and enjoy BSec-NFVO!
+
